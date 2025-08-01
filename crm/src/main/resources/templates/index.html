@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customer Manager</title>
+</head>
+<body>
+<h1>Customer List</h1>
+<a th:href="@{/showNewCustomerForm}">Add New Customer</a>
+<table border="1">
+    <tr>
+        <th>Name</th><th>Email</th><th>Phone</th><th>Actions</th>
+    </tr>
+    <tr th:each="customer : ${listCustomers}">
+        <td th:text="${customer.name}"></td>
+        <td th:text="${customer.email}"></td>
+        <td th:text="${customer.phone}"></td>
+        <td>
+            <a th:href="@{/showFormForUpdate/{id}(id=${customer.id})}">Edit</a> |
+            <a th:href="@{/deleteCustomer/{id}(id=${customer.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
